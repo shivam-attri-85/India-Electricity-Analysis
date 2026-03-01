@@ -1,77 +1,59 @@
 # ⚡ India Electricity Analysis Dashboard
 
+![Dashboard Preview](./screenshot.png)
 
-A clean and interactive **Data Analytics Dashboard** built with React, TypeScript, and Vite to explore electricity production and usage trends in India.
+A modern and interactive **Data Analytics Dashboard** built using **React, TypeScript, and Vite** to analyze electricity production and usage trends across India.
 
-🔗 Live Demo:
+🔗 **Live Demo:** https://your-vercel-link.vercel.app
 
 ---
 
 ## 📌 Project Overview
 
-This application allows users to upload electricity data (CSV), analyze it, and visualize key trends through a modern UI. Users can compare states, years, and scenarios to understand energy patterns across India.
+This web application allows users to upload electricity datasets (CSV format), analyze them, and visualize meaningful insights through interactive charts and scenario-based comparisons.
 
-This project demonstrates:
-- CSV data processing
-- Dynamic data visualization
-- Modular React component architecture
-- TypeScript type safety
-- Vite for lightning-fast performance
-- Deployment using Vercel
+It helps in understanding:
+
+- 📊 State-wise electricity production  
+- 📈 Year-wise growth trends  
+- 🌱 Renewable vs Non-renewable comparison  
+- 📂 Dynamic CSV data analysis  
+
+The project focuses on clean architecture, scalability, and performance.
 
 ---
 
 ## 🛠 Tech Stack
 
-| Tool / Library | Purpose |
-|----------------|---------|
-| ⚛️ React       | UI framework |
-| 🟦 TypeScript  | Type safety |
-| ⚡ Vite        | Dev & build tool |
-| 📊 Charting UI | Visual analytics |
-| 🌐 Vercel     | Deployment & hosting |
+- ⚛️ React (Vite)
+- 🟦 TypeScript
+- 📊 Data Visualization
+- 📁 CSV Parsing & Processing
+- 🌐 Deployed on Vercel
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
 ✔ Upload and analyze CSV files  
-✔ Scenario-based views and insights  
-✔ Interactive charts and tables  
-✔ Clean and responsive layout  
-✔ Fast performance with Vite
-
----
-
-## 📁 Project Structure
-
-│
-├── public/
-├── src/
-│ ├── components/
-│ ├── context/
-│ ├── data/
-│ ├── lib/
-│ └── App.tsx
-│
-├── index.html
-├── package.json
-├── tsconfig.json
-└── vite.config.ts
-
-
-
+✔ Interactive charts and analytics  
+✔ Scenario-based insights  
+✔ Clean modular component structure  
+✔ Fast performance with Vite  
+✔ Fully responsive UI  
 
 ---
 
 ## 🧑‍💻 Getting Started
 
-### 1️⃣ Clone the repository  Install dependencies and run locally
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/shivam-attri-85/India-Electricity-Analysis.git
 cd India-Electricity-Analysis
 
 
+ Install Dependencies
 npm install
+  Run the Development Server
 npm run dev
