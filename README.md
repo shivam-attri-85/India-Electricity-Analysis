@@ -4,8 +4,7 @@
 
 A modern and interactive **Data Analytics Dashboard** built using **React, TypeScript, and Vite** to analyze electricity production and usage trends across India.
 
-🔗 **Live Demo:** https://your-vercel-link.vercel.app
-
+🔗 **Live Demo:** https://india-electricity-analysis.vercel.app/
 ---
 
 ## 📌 Project Overview
