@@ -1,0 +1,5 @@
+{
+  "name": "India Electricity Analysis",
+  "description": "Dashboard analyzing electricity consumption trends in India (2019-2020) and a general-purpose CSV Analysis tool.",
+  "requestFramePermissions": []
+}
