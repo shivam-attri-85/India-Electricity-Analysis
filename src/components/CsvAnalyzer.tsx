@@ -22,7 +22,11 @@ import {
   Tooltip,
   ResponsiveContainer,
   AreaChart,
-  Area
+  Area,
+  PieChart,
+  Pie,
+  Cell,
+  Legend
 } from 'recharts';
 import { useData } from '@/context/DataContext';
 import { cn } from '@/lib/utils';
@@ -286,16 +290,39 @@ export default function CsvAnalyzer() {
                         </div>
                       </CardHeader>
                       <CardContent className="p-6">
-                        <div className="h-64">
-                          <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={chartData} layout="vertical">
-                              <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#f1f5f9" />
-                              <XAxis type="number" hide />
-                              <YAxis dataKey="name" type="category" width={80} fontSize={10} axisLine={false} tickLine={false} />
-                              <Tooltip cursor={{ fill: '#f8fafc' }} contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
-                              <Bar dataKey="value" fill={COLORS[idx % COLORS.length]} radius={[0, 4, 4, 0]} barSize={20} />
-                            </BarChart>
-                          </ResponsiveContainer>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                          <div className="h-64">
+                            <ResponsiveContainer width="100%" height="100%">
+                              <BarChart data={chartData} layout="vertical">
+                                <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#f1f5f9" />
+                                <XAxis type="number" hide />
+                                <YAxis dataKey="name" type="category" width={80} fontSize={10} axisLine={false} tickLine={false} />
+                                <Tooltip cursor={{ fill: '#f8fafc' }} contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
+                                <Bar dataKey="value" fill={COLORS[idx % COLORS.length]} radius={[0, 4, 4, 0]} barSize={20} />
+                              </BarChart>
+                            </ResponsiveContainer>
+                          </div>
+                          <div className="h-64">
+                            <ResponsiveContainer width="100%" height="100%">
+                              <PieChart>
+                                <Pie
+                                  data={chartData}
+                                  cx="50%"
+                                  cy="50%"
+                                  innerRadius={40}
+                                  outerRadius={60}
+                                  paddingAngle={5}
+                                  dataKey="value"
+                                  nameKey="name"
+                                >
+                                  {chartData.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS[(idx + index) % COLORS.length]} />
+                                  ))}
+                                </Pie>
+                                <Tooltip contentStyle={{ borderRadius: '12px', border: 'none' }} />
+                              </PieChart>
+                            </ResponsiveContainer>
+                          </div>
                         </div>
                       </CardContent>
                     </Card>

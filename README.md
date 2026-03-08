@@ -1,58 +1,20 @@
-# ⚡ India Electricity Analysis Dashboard
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-![Dashboard Preview](./screenshot.png)
+# Run and deploy your AI Studio app
 
-A modern and interactive **Data Analytics Dashboard** built using **React, TypeScript, and Vite** to analyze electricity production and usage trends across India.
+This contains everything you need to run your app locally.
 
-🔗 **Live Demo:** https://india-electricity-analysis.vercel.app/
----
+View your app in AI Studio: https://ai.studio/apps/fde93208-57c8-449b-bd08-594eb1bf6885
 
-## 📌 Project Overview
+## Run Locally
 
-This web application allows users to upload electricity datasets (CSV format), analyze them, and visualize meaningful insights through interactive charts and scenario-based comparisons.
-
-It helps in understanding:
-
-- 📊 State-wise electricity production  
-- 📈 Year-wise growth trends  
-- 🌱 Renewable vs Non-renewable comparison  
-- 📂 Dynamic CSV data analysis  
-
-The project focuses on clean architecture, scalability, and performance.
-
----
-
-## 🛠 Tech Stack
-
-- ⚛️ React (Vite)
-- 🟦 TypeScript
-- 📊 Data Visualization
-- 📁 CSV Parsing & Processing
-- 🌐 Deployed on Vercel
-
----
-
-## 🚀 Key Features
-
-✔ Upload and analyze CSV files  
-✔ Interactive charts and analytics  
-✔ Scenario-based insights  
-✔ Clean modular component structure  
-✔ Fast performance with Vite  
-✔ Fully responsive UI  
-
----
-
-## 🧑‍💻 Getting Started
-
-### 1️⃣ Clone the Repository
-
-```bash
-git clone https://github.com/shivam-attri-85/India-Electricity-Analysis.git
-cd India-Electricity-Analysis
+**Prerequisites:**  Node.js
 
 
- Install Dependencies
-npm install
-  Run the Development Server
-npm run dev
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

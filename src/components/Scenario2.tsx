@@ -7,14 +7,19 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell
 } from 'recharts';
 import { getYear, getMonth, isValid } from 'date-fns';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { MOCK_DATA } from '@/data/mockData';
 import { useData } from '@/context/DataContext';
-import { Info, Filter } from 'lucide-react';
+import { Info, Filter, PieChart as PieChartIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+const COLORS = ['#3b82f6', '#8b5cf6', '#ec4899', '#f97316', '#10b981', '#06b6d4'];
 
 export default function Scenario2() {
   const { data: customData, isCustomData } = useData();
@@ -129,49 +134,106 @@ export default function Scenario2() {
         </div>
       </div>
 
-      <Card className="border-none shadow-xl bg-white rounded-3xl overflow-hidden">
-        <CardHeader className="p-8 border-b border-slate-50">
-          <CardTitle className="text-xl font-bold text-slate-900">Regional Distribution ({selectedYear})</CardTitle>
-          <CardDescription className="text-slate-400 mt-1">
-            Total energy consumption across India's geographical zones
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="p-8">
-          <div className="h-[400px] w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={regionData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="region" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} dy={10} />
-                <YAxis 
-                  stroke="#94a3b8" 
-                  fontSize={11} 
-                  tickLine={false} 
-                  axisLine={false}
-                  tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`}
-                />
-                <Tooltip 
-                  cursor={{ fill: '#f8fafc' }}
-                  contentStyle={{ backgroundColor: '#1e293b', borderRadius: '12px', border: 'none', color: '#fff' }}
-                  itemStyle={{ color: '#fff' }}
-                />
-                <Bar dataKey="consumption" name="Total Consumption" fill="#3b82f6" radius={[6, 6, 0, 0]} barSize={48} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-          <div className="mt-8 p-6 bg-blue-50/50 rounded-2xl border border-blue-100 flex gap-4 items-start">
-            <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
-              <Info size={18} />
+      <div className="grid gap-8 lg:grid-cols-3">
+        <Card className="lg:col-span-2 border-none shadow-xl bg-white rounded-3xl overflow-hidden">
+          <CardHeader className="p-8 border-b border-slate-50">
+            <CardTitle className="text-xl font-bold text-slate-900">Regional Distribution ({selectedYear})</CardTitle>
+            <CardDescription className="text-slate-400 mt-1">
+              Total energy consumption across India's geographical zones
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="p-8">
+            <div className="h-[400px] w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={regionData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                  <XAxis dataKey="region" stroke="#94a3b8" fontSize={11} tickLine={false} axisLine={false} dy={10} />
+                  <YAxis 
+                    stroke="#94a3b8" 
+                    fontSize={11} 
+                    tickLine={false} 
+                    axisLine={false}
+                    tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`}
+                  />
+                  <Tooltip 
+                    cursor={{ fill: '#f8fafc' }}
+                    contentStyle={{ backgroundColor: '#1e293b', borderRadius: '12px', border: 'none', color: '#fff' }}
+                    itemStyle={{ color: '#fff' }}
+                  />
+                  <Bar dataKey="consumption" name="Total Consumption" fill="#3b82f6" radius={[6, 6, 0, 0]} barSize={48} />
+                </BarChart>
+              </ResponsiveContainer>
             </div>
-            <div>
-              <h4 className="font-bold text-blue-900 text-sm">Regional Insight</h4>
-              <p className="text-sm text-blue-700/80 leading-relaxed mt-1">
-                The <strong>West</strong> and <strong>North</strong> regions remain the primary drivers of national demand. 
-                Industrial activity in these zones creates a high baseline that was significantly disrupted during the 2020 lockdown.
-              </p>
+          </CardContent>
+        </Card>
+
+        <Card className="border-none shadow-xl bg-white rounded-3xl overflow-hidden">
+          <CardHeader className="p-8 border-b border-slate-50">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-blue-50 rounded-lg text-blue-600">
+                <PieChartIcon size={18} />
+              </div>
+              <div>
+                <CardTitle className="text-lg font-bold text-slate-900">Market Share</CardTitle>
+                <CardDescription className="text-slate-400">By Region</CardDescription>
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardHeader>
+          <CardContent className="p-8">
+            <div className="h-[300px] w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={regionData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60}
+                    outerRadius={80}
+                    paddingAngle={5}
+                    dataKey="consumption"
+                    nameKey="region"
+                  >
+                    {regionData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: '#1e293b', borderRadius: '12px', border: 'none', color: '#fff' }}
+                    itemStyle={{ color: '#fff' }}
+                  />
+                  <Legend verticalAlign="bottom" height={36}/>
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="mt-6 space-y-3">
+              {regionData.slice(0, 3).map((r, i) => (
+                <div key={r.region} className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
+                    <span className="text-xs font-medium text-slate-600">{r.region}</span>
+                  </div>
+                  <span className="text-xs font-bold text-slate-900">
+                    {((r.consumption / regionData.reduce((acc, curr) => acc + curr.consumption, 0)) * 100).toFixed(1)}%
+                  </span>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="p-6 bg-blue-50/50 rounded-2xl border border-blue-100 flex gap-4 items-start">
+        <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
+          <Info size={18} />
+        </div>
+        <div>
+          <h4 className="font-bold text-blue-900 text-sm">Regional Insight</h4>
+          <p className="text-sm text-blue-700/80 leading-relaxed mt-1">
+            The <strong>West</strong> and <strong>North</strong> regions remain the primary drivers of national demand. 
+            Industrial activity in these zones creates a high baseline that was significantly disrupted during the 2020 lockdown.
+          </p>
+        </div>
+      </div>
 
       <Card className="border-none shadow-xl bg-white rounded-3xl overflow-hidden">
         <CardHeader className="p-8 border-b border-slate-50">
