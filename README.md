@@ -1,6 +1,3 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-
 # ⚡ EnergyPulse — India Electricity Analysis
 
 An interactive dashboard analyzing electricity consumption trends across Indian states and regions, with a focus on comparing pre- and post-COVID lockdown data (2019 vs 2020).
