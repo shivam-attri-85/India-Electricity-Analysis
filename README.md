@@ -57,18 +57,6 @@ An interactive dashboard analyzing electricity consumption trends across Indian 
 - **KPI Dashboard** — Key metrics including lockdown impact %, peak demand, lowest demand, and April 2020 comparison
 - **Responsive Design** — Desktop sidebar + mobile-optimized tabbed navigation
 
-## 🛠️ Tech Stack
-
-| Technology | Purpose |
-|---|---|
-| React 19 + TypeScript | Frontend framework |
-| Vite | Build tool |
-| Tailwind CSS 4 | Styling |
-| Recharts | Data visualization |
-| PapaParse | CSV parsing |
-| Lucide React | Icons |
-| date-fns | Date utilities |
-
 ## 🚀 Run Locally
 
 **Prerequisites:** Node.js
