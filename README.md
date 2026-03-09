@@ -4,8 +4,6 @@ An interactive dashboard analyzing electricity consumption trends across Indian 
 
 🔗 **Live Demo:** [india-electricity-analysis.vercel.app](https://india-electricity-analysis.vercel.app/)
 
-</div>
-
 ---
 
 ## 📸 Screenshots
