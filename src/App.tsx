@@ -3,7 +3,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Scenario1 from '@/components/Scenario1';
 import Scenario2 from '@/components/Scenario2';
 import CsvAnalyzer from '@/components/CsvAnalyzer';
-import { Zap, FileText, LayoutDashboard, Map, BarChart3, Settings } from 'lucide-react';
+import SnapshotGallery from '@/components/SnapshotGallery';
+import { Zap, FileText, ImageIcon, LayoutDashboard, Map } from 'lucide-react';
 import { DataProvider } from '@/context/DataContext';
 import { cn } from '@/lib/utils';
 
@@ -22,6 +23,7 @@ function AppContent() {
     { id: 'scenario1', label: 'National Trends', icon: LayoutDashboard },
     { id: 'scenario2', label: 'Regional Analysis', icon: Map },
     { id: 'csv-analysis', label: 'Data Explorer', icon: FileText },
+    { id: 'snapshots', label: 'Snapshots', icon: ImageIcon },
   ];
 
   return (
@@ -95,10 +97,11 @@ function AppContent() {
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
             {/* Mobile Nav */}
             <div className="lg:hidden mb-6">
-              <TabsList className="grid w-full grid-cols-3 bg-white border border-slate-200 rounded-xl p-1 h-12">
+              <TabsList className="grid w-full grid-cols-4 bg-white border border-slate-200 rounded-xl p-1 h-12">
                 <TabsTrigger value="scenario1" className="rounded-lg">Trends</TabsTrigger>
                 <TabsTrigger value="scenario2" className="rounded-lg">Regions</TabsTrigger>
                 <TabsTrigger value="csv-analysis" className="rounded-lg">Data</TabsTrigger>
+                <TabsTrigger value="snapshots" className="rounded-lg">Shots</TabsTrigger>
               </TabsList>
             </div>
 
@@ -112,6 +115,10 @@ function AppContent() {
 
             <TabsContent value="csv-analysis" className="space-y-8 outline-none">
               <CsvAnalyzer />
+            </TabsContent>
+
+            <TabsContent value="snapshots" className="space-y-8 outline-none">
+              <SnapshotGallery />
             </TabsContent>
           </Tabs>
         </div>
