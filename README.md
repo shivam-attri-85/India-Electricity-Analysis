@@ -94,3 +94,4 @@ src/
 
 - [shivam-attri-85](https://github.com/shivam-attri-85) — Shivam Chaudhary
 - [GitSKY9795](https://github.com/GitSKY9795) — Sumeet Kumar Yadav
+- [Vishal795-knightrider](https://github.com/Vishal795-knightrider) -Vishal kashyap
